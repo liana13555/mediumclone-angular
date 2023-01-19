@@ -9,6 +9,7 @@ import {AuthModule} from 'src/app/auth/auth.module'
 import {environment} from 'src/environments/environment'
 import {HttpClientModule} from '@angular/common/http'
 import {EffectsModule} from '@ngrx/effects'
+import {BackendErrorMessagesModule} from './shared/modules/backendErrorMessages.module'
 
 @NgModule({
   declarations: [AppComponent],
