@@ -1337,6 +1337,13 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@ngrx/effects@^15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-15.1.0.tgz#af62b690cbc58338d1332e3c15cf0bfcec401653"
+  integrity sha512-/8YnhzyAOTdI9RYJAqmIIvh8ip4M4x4DrRyrdDDc62oFM3TrVOvknUUpMp5NxKpKph8hSpevAwaeEBDWGnKkjg==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/store-devtools@^15.1.0":
   version "15.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-15.1.0.tgz#c2b3f2d4b91f045adf16e6b6f3f031dc6fd98f7c"
