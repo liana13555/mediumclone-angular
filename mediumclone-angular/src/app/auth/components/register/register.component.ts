@@ -3,19 +3,17 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
 import {Observable} from 'rxjs'
 
-import {AppStateInterface} from 'src/app/shared/types/appState.interface'
-import {BackendErrorsInterface} from 'src/app/shared/types/backendErrors.interface'
-import {CurrentUserInterface} from 'src/app/shared/types/currentUser.interface'
-import {AuthService} from '../../services/auth.service'
-import {registerAction} from '../../store/actions/register.action'
 import {
   isSubmittingSelector,
   validationErrorsSelector,
 } from '../../store/selectors'
+import {AuthService} from '../../services/auth.service'
+import {BackendErrorsInterface} from 'src/app/shared/types/backendErrors.interface'
 import {RegisterRequestInterface} from '../../types/registerRequest.interface'
+import {registerAction} from '../../store/actions/register.action'
 
 @Component({
-  selector: 'mc-register',
+  selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
@@ -26,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<AppStateInterface>,
+    private store: Store,
     private authService: AuthService
   ) {}
 
