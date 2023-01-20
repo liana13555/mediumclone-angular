@@ -13,6 +13,7 @@ import {BackendErrorMessagesModule} from './shared/modules/backend-error-message
 import {TopBarModule} from './shared/modules/topBar/topBar.module'
 import {PersistanceService} from './shared/services/persistance.service'
 import {AuthInterceptor} from './shared/services/authinterceptor.service'
+import {GlobalFeedModule} from './globalFeed/globalFeed.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import {AuthInterceptor} from './shared/services/authinterceptor.service'
       logOnly: environment.production,
     }),
     TopBarModule,
+    GlobalFeedModule,
   ],
   providers: [
     PersistanceService,
