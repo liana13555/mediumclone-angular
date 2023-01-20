@@ -12,7 +12,7 @@ import {AuthService} from './services/auth.service'
 import {PersistanceService} from '../shared/services/persistance.service'
 import {RegisterEffect} from './store/effects/register.effect'
 import {LoginEffect} from './store/effects/login.effect'
-import {BackendErrorMessagesModule} from '../shared/modules/backendErrorMessages.module'
+import {BackendErrorMessagesModule} from '../shared/modules/backend-error-messages/backendErrorMessages.module'
 
 const routes = [
   {
