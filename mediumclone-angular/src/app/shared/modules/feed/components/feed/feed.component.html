@@ -24,5 +24,10 @@
       HERE IS LIST OF TAGS
     </a>
   </div>
-  PAGINATION
+  <app-pagination
+    [total]="(feed$ | async)?.articlesCount"
+    [limit]="limit"
+    [url]="baseUrl"
+    [currentPage]="currentPage"
+  ></app-pagination>
 </div>
