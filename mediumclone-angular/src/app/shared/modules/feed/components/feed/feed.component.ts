@@ -11,6 +11,7 @@ import {
 } from '../../store/selectors'
 import {GetFeedResponseInterface} from '../../types/getFeedResponse.interface'
 import queryString from 'query-string'
+import {PopularTagType} from 'src/app/shared/types/popularTag.type'
 
 @Component({
   selector: 'app-feed',
