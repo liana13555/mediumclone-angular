@@ -10,6 +10,7 @@ import {
   isLoadingSelector,
 } from '../../store/selectors'
 import {GetFeedResponseInterface} from '../../types/getFeedResponse.interface'
+import queryString from 'query-string'
 
 @Component({
   selector: 'app-feed',
@@ -35,7 +36,7 @@ export class FeedComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeValues()
-    this.fetchData()
+    // this.fetchData()
     this.initializeListeners() // метод, где нах-ся все подписки для получ-я query парам-в url
   }
 
@@ -51,7 +52,8 @@ export class FeedComponent implements OnInit, OnDestroy {
       (params: Params) => {
         // this.currentPage = Number(params.page || '1')
         this.currentPage = Number(params['page'] || '1')
-        // console.log('currentPage', this.currentPage)
+        console.log('currentPage', this.currentPage)
+        this.fetchData()
       }
     )
   }
@@ -61,6 +63,15 @@ export class FeedComponent implements OnInit, OnDestroy {
   }
 
   fetchData(): void {
-    this.store.dispatch(getFeedAction({url: this.apiUrlProps}))
+    // this.store.dispatch(getFeedAction({ url: this.apiUrlProps }))
+    const offset = this.currentPage * this.limit - this.limit
+    const parsedUrl = queryString.parseUrl(this.apiUrlProps)
+    const stringifiedParams = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    })
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
+    this.store.dispatch(getFeedAction({url: apiUrlWithParams}))
   }
 }
