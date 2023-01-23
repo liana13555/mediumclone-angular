@@ -1,4 +1,11 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core'
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core'
 import {ActivatedRoute, Params, Router} from '@angular/router'
 import {select, Store} from '@ngrx/store'
 import {Observable, Subscription} from 'rxjs'
@@ -18,7 +25,7 @@ import {PopularTagType} from 'src/app/shared/types/popularTag.type'
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent implements OnInit, OnDestroy {
+export class FeedComponent implements OnInit, OnDestroy, OnChanges {
   @Input('apiUrl') apiUrlProps: string
 
   isLoading$: Observable<boolean>
@@ -39,6 +46,7 @@ export class FeedComponent implements OnInit, OnDestroy {
     this.initializeValues()
     // this.fetchData()
     this.initializeListeners() // метод, где нах-ся все подписки для получ-я query парам-в url
+    // console.log('Initialized feed')
   }
 
   initializeValues(): void {
@@ -53,7 +61,7 @@ export class FeedComponent implements OnInit, OnDestroy {
       (params: Params) => {
         // this.currentPage = Number(params.page || '1')
         this.currentPage = Number(params['page'] || '1')
-        console.log('currentPage', this.currentPage)
+        // console.log('currentPage', this.currentPage)
         this.fetchData()
       }
     )
@@ -61,6 +69,19 @@ export class FeedComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.queryParamsSubscription.unsubscribe()
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const isApiUrlChanged =
+      !changes['apiUrlProps'].firstChange &&
+      changes['apiUrlProps'].currentValue !==
+        changes['apiUrlProps'].previousValue
+    // console.log('isApiUrlChanged', isApiUrlChanged)
+    // console.log('changes', changes)
+
+    if (isApiUrlChanged) {
+      this.fetchData()
+    }
   }
 
   fetchData(): void {
