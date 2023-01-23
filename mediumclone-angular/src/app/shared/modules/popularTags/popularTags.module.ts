@@ -6,6 +6,9 @@ import {PopularTagsComponent} from './components/popularTags/popularTags.compone
 import {PopularTagsService} from './services/popularTags.service'
 import {reducers} from './store/reducers'
 import {GetPopularTagsEffect} from './store/effects/getPopularTags.effect'
+import {ErrorMessageModule} from '../errorMessage/errorMessage.module'
+import {LoadingModule} from '../loading/loading.module'
+import {RouterModule} from '@angular/router'
 
 @NgModule({
   declarations: [PopularTagsComponent],
@@ -13,6 +16,9 @@ import {GetPopularTagsEffect} from './store/effects/getPopularTags.effect'
     CommonModule,
     StoreModule.forFeature('popularTags', reducers),
     EffectsModule.forFeature([GetPopularTagsEffect]),
+    LoadingModule,
+    ErrorMessageModule,
+    RouterModule,
   ],
   exports: [PopularTagsComponent],
   providers: [PopularTagsService],
