@@ -12,7 +12,7 @@ export const isLoadingSelector = createSelector(
   (articleState: ArticleStateInterface) => articleState.isLoading
 )
 
-export const errorsSelector = createSelector(
+export const errorSelector = createSelector(
   articleFeatureSelector,
   (articleState: ArticleStateInterface) => articleState.error
 )

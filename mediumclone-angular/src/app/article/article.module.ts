@@ -9,6 +9,14 @@ import {RouterModule} from '@angular/router'
 import {ErrorMessageModule} from '../shared/modules/errorMessage/errorMessage.module'
 import {LoadingModule} from '../shared/modules/loading/loading.module'
 import {ArticleService as SharedArticleService} from '../shared/services/article.service'
+import {TagListModule} from '../shared/modules/tagList/tagList.module'
+
+const routes = [
+  {
+    path: 'articles/:slug',
+    component: ArticleComponent,
+  },
+]
 
 @NgModule({
   declarations: [ArticleComponent],
@@ -19,6 +27,8 @@ import {ArticleService as SharedArticleService} from '../shared/services/article
     RouterModule,
     ErrorMessageModule,
     LoadingModule,
+    RouterModule.forChild(routes),
+    TagListModule,
   ],
   providers: [SharedArticleService],
 })
