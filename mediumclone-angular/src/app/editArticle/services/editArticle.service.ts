@@ -10,16 +10,17 @@ import {SaveArticleResponseInterface} from 'src/app/shared/types/saveArticleResp
 @Injectable({
   providedIn: 'root',
 })
-export class CreateArticleService {
+export class EditArticleService {
   constructor(private http: HttpClient) {}
 
-  createArticle(
+  updateArticle(
+    slug: string,
     articleInput: ArticleInputInterface
   ): Observable<ArticleInterface> {
-    const fullUrl = environment.apiUrl + '/articles'
+    const fullUrl = `${environment.apiUrl}/articles/${slug}`
 
     return this.http
-      .post<SaveArticleResponseInterface>(fullUrl, {article: articleInput})
+      .put<SaveArticleResponseInterface>(fullUrl, {article: articleInput})
       .pipe(map((response: SaveArticleResponseInterface) => response.article))
   }
 }
