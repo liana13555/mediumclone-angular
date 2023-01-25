@@ -17,6 +17,7 @@ export class ArticleFormComponent implements OnInit {
     new EventEmitter<ArticleInputInterface>()
 
   form: FormGroup
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
